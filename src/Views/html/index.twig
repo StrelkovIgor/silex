@@ -1,0 +1,55 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ 'test'|trans }}</title>
+	 <base href="/"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/main.css" rel="stylesheet" type='text/css'>
+</head>
+<body>
+    {% set active = active|default(null) %}
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <ul class="nav">
+               <li {% if 'homepage' == active %}class="active"{% endif %}><a href="{{ path('homepage') }}"><i class="icon-home"></i>  {{ 'Home'|trans }}</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                {% if is_granted('ROLE_USER') %}
+                    <li></li>
+                    <li><a href="{{ path('logout') }}">{{ 'Logout'|trans }}</a></li>
+                {% else %}
+					<li {% if 'reg' == active %}class="active"{% endif %}><a href="{{ path('reg') }}"><i class="icon-user"></i> {{ 'Registration'|trans }}</a></li>
+                    <li {% if 'login' == active %}class="active"{% endif %}><a href="{{ path('login') }}"><i class="icon-user"></i> {{ 'Login'|trans }}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="front_header">{{ 'test'|trans }}</div>
+    {% block secondaryNavigation %}
+    {% endblock %}
+	{% block body %}{% endblock %}
+
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+    <script src="js/bootstrap-affix.js"></script>
+    <script src="js/holder/holder.js"></script>
+    <script src="js/google-code-prettify/prettify.js"></script>
+</body>
+</html>
